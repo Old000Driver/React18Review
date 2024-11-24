@@ -1,5 +1,9 @@
 import { useRef, useState } from "react";
 
+function Son(){
+  return <div></div>
+}
+
 function App() {
   const [value, setValue] = useState("");
   const inputRef = useRef(null);

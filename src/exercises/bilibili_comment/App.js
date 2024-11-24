@@ -1,8 +1,10 @@
 import "./App.scss";
 import avatar from "../../images/bozai.png";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import _ from "lodash";
 import classNames from "classnames";
+import dayjs from "dayjs";
+import { v4 as uuidv4 } from "uuid";
 
 /**
  * 评论列表的渲染和操作
@@ -80,6 +82,38 @@ const App = () => {
   const [commentList, setCommentList] = useState(defaultList);
   const [tabList, setTabList] = useState(tabs);
   const [type, setType] = useState("hot");
+  const [content, setContent] = useState("");
+  const inputRef = useRef("");
+
+  const handleSubmit = () => {
+    const like = _.random(1, 100);
+    const ctime = dayjs().format("MM-DD HH:mm");
+    setCommentList([
+      ...commentList,
+      {
+        // 评论id
+        rpid: uuidv4(),
+
+        // 用户信息
+        user: {
+          uid: "30009257",
+          // 用户头像
+          avatar,
+          // 用户昵称
+          uname: "迟暮",
+        },
+        // 评论内容
+        content,
+        // 评论时间
+        ctime,
+        like,
+      },
+    ]);
+
+    setContent("");
+    console.dir(inputRef.current);
+    inputRef.current.focus();
+  };
 
   // Tab功能
   const handleTabChange = (type) => {
@@ -140,10 +174,15 @@ const App = () => {
             <textarea
               className="reply-box-textarea"
               placeholder="发一条友善的评论"
+              value={content}
+              ref={inputRef}
+              onChange={(e) => setContent(e.target.value)}
             />
             {/* 发布按钮 */}
             <div className="reply-box-send">
-              <div className="send-text">发布</div>
+              <div className="send-text" onClick={() => handleSubmit()}>
+                发布
+              </div>
             </div>
           </div>
         </div>
