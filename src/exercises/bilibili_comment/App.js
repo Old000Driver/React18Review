@@ -1,5 +1,5 @@
 import "./App.scss";
-import avatar from "./images/bozai.png";
+import avatar from "../../images/bozai.png";
 import { useState } from "react";
 import _ from "lodash";
 import classNames from "classnames";
