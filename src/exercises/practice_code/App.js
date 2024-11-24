@@ -1,24 +1,30 @@
 import { useRef, useState } from "react";
 
-function Son(){
-  return <div></div>
+function Son(props) {
+  console.log("props", props);
+  const sonMsg = "son1 msg";
+  return (
+    <div>
+      son1
+      <button onClick={() => props.onGetSonMsg(sonMsg)}> send</button>
+    </div>
+  );
+}
+
+function Son2(props) {
+  return <div>son2: {props.msg}</div>;
 }
 
 function App() {
-  const [value, setValue] = useState("");
-  const inputRef = useRef(null);
-  const showDom = () => {
-    console.log("inputRef", inputRef);
+  const name = "this is app name.";
+  let [son1Msg, setSon1Msg] = useState("");
+  const onGetSonMsg = (msg) => {
+    setSon1Msg(msg);
   };
   return (
     <div className="App">
-      <input
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        type="text"
-        ref={inputRef}
-      />
-      <button onClick={showDom}>获取 Input Dom</button>
+      <Son name={name} onGetSonMsg={onGetSonMsg}></Son>
+      <Son2 msg={son1Msg}></Son2>
     </div>
   );
 }
