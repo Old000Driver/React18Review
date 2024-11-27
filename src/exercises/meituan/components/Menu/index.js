@@ -1,7 +1,10 @@
 import classNames from "classnames";
 import "./index.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFoodsList } from "../../../../store/modules/takeaway";
+import {
+  fetchFoodsList,
+  changeActiveIndex,
+} from "../../../../store/modules/takeaway";
 import { useEffect } from "react";
 
 const Menu = () => {
@@ -9,7 +12,7 @@ const Menu = () => {
   useEffect(() => {
     dispatch(fetchFoodsList());
   }, [dispatch]);
-  const { foodsList } = useSelector((state) => state.foods);
+  const { foodsList,activeIndex } = useSelector((state) => state.foods);
   const menus = foodsList.map((item) => ({ tag: item.tag, name: item.name }));
   return (
     <nav className="list-menu">
@@ -17,8 +20,11 @@ const Menu = () => {
       {menus.map((item, index) => {
         return (
           <div
+            onClick={() => {
+              dispatch(changeActiveIndex(index));
+            }}
             key={item.tag}
-            className={classNames("list-menu-item", "active")}
+            className={classNames("list-menu-item", activeIndex === index && "active")}
           >
             {item.name}
           </div>
