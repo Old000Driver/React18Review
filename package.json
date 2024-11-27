@@ -23,7 +23,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "serve": "json-server db.json --port 3004"
+    "serve": "json-server db.json --port 3004",
+    "serve2": "json-server src/exercises/meituan/server/data.json --port 3004"
   },
   "eslintConfig": {
     "extends": [
