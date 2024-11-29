@@ -8,7 +8,7 @@ import router from "./router/index.js";
 const exercise = process.env.REACT_APP_EXERCISE || "bilibili_comment";
 
 import(`./exercises/${exercise}/App.js`).then(({ default: App }) => {
-  router.routes[2].element = <App />;
+  // router.routes[2].element = <App />;
   const root = createRoot(document.querySelector("#root"));
   root.render(
     <Provider store={store}>
