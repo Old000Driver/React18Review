@@ -1,9 +1,9 @@
-// 配置@/*
 {
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@Bill/*": ["src/exercises/Bill/*"]
     }
   }
 }

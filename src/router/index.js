@@ -8,8 +8,11 @@ import Board from "../exercises/react-router/page/Board/index";
 import About from "../exercises/react-router/page/About/index";
 import Notfound from "../exercises/react-router/page/NotFound/index";
 import App from "../exercises/Bill/App";
+import Month from "@/exercises/Bill/pages/Month";
+import Year from "@/exercises/Bill/pages/Year";
+import New from "@/exercises/Bill/pages/New";
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   // {
   //   path: "/",
   //   element: <Layout />,
@@ -35,14 +38,28 @@ const router = createHashRouter([
   //   element: <Article />,
   // },
   {
-    path: "*",
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        index: true,
+        // path: "month",
+        element: <Month />,
+      },
+      {
+        path: "year",
+        element: <Year />,
+      },
+    ],
+  },
+  {
+    path: "/new",
     element: (
       <div>
-        <App />
+        <New />
       </div>
     ),
   },
-
   {
     path: "*",
     element: (

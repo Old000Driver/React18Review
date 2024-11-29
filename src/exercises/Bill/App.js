@@ -1,7 +1,12 @@
 import { useState } from "react";
+import Layout from "./pages/Layout";
 
 function App() {
-  return <div className="App">it's new one</div>;
+  return (
+    <div className="App">
+      <Layout />
+    </div>
+  );
 }
 
 export default App;
