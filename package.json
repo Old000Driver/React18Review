@@ -25,7 +25,8 @@
     "start": "craco start",
     "build": "craco build",
     "serve": "json-server db.json --port 3004",
-    "serve2": "json-server src/exercises/meituan/server/data.json --port 3004"
+    "serve2": "json-server src/exercises/meituan/server/data.json --port 3004",
+    "serve3": "json-server server/data.json --port 3004"
   },
   "eslintConfig": {
     "extends": [
