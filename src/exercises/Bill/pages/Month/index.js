@@ -28,8 +28,10 @@ const Month = () => {
 
   const monthResult = useMemo(() => {
     // 支出  /  收入  / 结余
-    const pay = currentMonthList.filter(item => item.type === 'pay').reduce((a, c) => a + c.money, 0)
-    const income = currentMonthList.filter(item => item.type === 'income').reduce((a, c) => a + c.money, 0)
+    console.log("currentMonthList",currentMonthList);
+    if (!currentMonthList) return { pay: 0, income: 0, total: 0 };
+    const pay = currentMonthList.filter(item => item.type === 'pay')?.reduce((a, c) => a + c.money, 0)
+    const income = currentMonthList.filter(item => item.type === 'income')?.reduce((a, c) => a + c.money, 0)
     return {
       pay,
       income,
