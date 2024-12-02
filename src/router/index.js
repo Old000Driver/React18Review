@@ -11,6 +11,7 @@ import App from "../exercises/Bill/App";
 import Month from "@/exercises/Bill/pages/Month";
 import Year from "@/exercises/Bill/pages/Year";
 import New from "@/exercises/Bill/pages/New";
+import { Navigate } from "react-router-dom";
 
 const router = createBrowserRouter([
   // {
