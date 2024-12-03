@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const billStore = createSlice({
-  name:'bill',
+  name: "bill",
   initialState: {
     billList: [],
   },
@@ -10,10 +10,13 @@ const billStore = createSlice({
     setBillList(state, action) {
       state.billList = action.payload;
     },
+    addBill(state, action) {
+      state.billList.push(action.payload);
+    },
   },
 });
 
-const { setBillList } = billStore.actions;
+const { setBillList, addBill } = billStore.actions;
 
 const getBillList = () => {
   return async (dispatch) => {
@@ -23,7 +26,14 @@ const getBillList = () => {
   };
 };
 
+const addBillList = (data) => {
+  return async (dispatch) => {
+    const res = await axios.post("http://localhost:3004/ka", data);
+    dispatch(addBill(res.data));
+  };
+};
+
 const reducer = billStore.reducer;
 
-export { getBillList };
+export { getBillList, addBillList };
 export default reducer;
