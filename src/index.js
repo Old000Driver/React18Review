@@ -5,16 +5,17 @@ import reportWebVitals from "./reportWebVitals";
 import { RouterProvider } from "react-router-dom";
 import router from "./router/index.js";
 
-import '@Bill/theme.css'
+import "@Bill/theme.css";
 
 const exercise = process.env.REACT_APP_EXERCISE || "bilibili_comment";
 
 import(`./exercises/${exercise}/App.js`).then(({ default: App }) => {
   const root = createRoot(document.querySelector("#root"));
   root.render(
-    <Provider store={store}>
-      <RouterProvider router={router}></RouterProvider>
-    </Provider>
+    // <Provider store={store}>
+    //   <RouterProvider router={router}></RouterProvider>
+    // </Provider>
+    <App></App>
   );
 });
 reportWebVitals();
