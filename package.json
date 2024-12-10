@@ -19,7 +19,8 @@
     "redux": "^5.0.1",
     "sass": "^1.57.1",
     "uuid": "^9.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zustand": "^5.0.2"
   },
   "scripts": {
     "start": "craco start",
